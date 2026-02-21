@@ -1,0 +1,68 @@
+/* Estilo Base Compartilhado */
+.custom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+
+  .btn-icon {
+    font-size: 1.1rem;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* --- Variação 1: WhatsApp --- */
+.btn-whatsapp {
+  background: rgba(37, 211, 102, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(37, 211, 102, 0.5);
+  backdrop-filter: blur(4px);
+
+  &:hover {
+    background: #25d366;
+    border-color: #25d366;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+/* --- Variação 2: Glass (Transparente pro Header) --- */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+
+  &:hover {
+    background: #ffffff;
+    color: #213555;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+}
+
+/* --- Variação 3: Primary (Sólido para Formulários e Hero) --- */
+.btn-primary {
+  background: #213555;
+  color: #ffffff;
+  border: 1px solid transparent;
+
+  &:hover {
+    background: #2c466f;
+    box-shadow: 0 4px 15px rgba(33, 53, 85, 0.3);
+    transform: translateY(-2px);
+  }
+}

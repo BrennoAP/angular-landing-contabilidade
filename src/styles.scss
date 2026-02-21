@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importando fontes formais e modernas */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+  --primary-navy: rgba(15, 23, 42, 0.85); /* Azul escuro sofisticado */
+  --accent-gold: #c5a059; /* Um dourado sutil para detalhes se quiser */
+  --font-brand: 'Playfair Display', serif;
+  --font-main: 'Inter', sans-serif;
+  --glass-border: rgba(255, 255, 255, 0.125);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: #f8fafc; /* Um cinza quase branco para o fundo da página */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

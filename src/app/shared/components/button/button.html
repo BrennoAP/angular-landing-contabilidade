@@ -1,0 +1,12 @@
+@if (href) {
+  <a [href]="href" [target]="target" [class]="classes">
+    @if (icon) { <span class="btn-icon" [class]="icon"></span> }
+    {{ label }}
+  </a>
+} 
+@else {
+  <button [class]="classes" (click)="handleClick($event)">
+    @if (icon) { <span class="btn-icon" [class]="icon"></span> }
+    {{ label }}
+  </button>
+}

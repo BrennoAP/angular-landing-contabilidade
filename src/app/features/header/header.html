@@ -1,0 +1,43 @@
+<header class="glass-header">
+  <div class="nav-wrapper">
+    
+    <a href="#hero" class="brand" aria-label="Voltar para o início">
+      <img [src]="headerIcon" alt="Logo" class="logo-icon">
+      <span class="brand-name">{{ company().name }}</span>
+    </a>
+
+    <nav class="nav-menu" [class.active]="isMobileMenuOpen()">
+      <ul class="nav-links">
+        <li><a href="#hero" (click)="closeMenu()">Início</a></li>
+        <li><a href="#services" (click)="closeMenu()">Serviços</a></li>
+        <li><a href="#contact" (click)="closeMenu()">Contato</a></li>
+      </ul>
+
+      
+    </nav>
+
+    <div class="header-actions">
+      <app-button 
+        label="WhatsApp" 
+        variant="whatsapp" 
+        [href]="whatsappLink()" 
+        target="_blank" 
+        customClass="desktop-only mr-2">
+      </app-button>
+
+      <app-button 
+        label="Orçamento" 
+        variant="glass" 
+        (onClick)="openContactModal()" 
+        customClass="desktop-only">
+      </app-button>
+      
+      <button class="mobile-toggle" (click)="toggleMenu()" aria-label="Abrir menu">
+        ☰
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<div class="mobile-overlay" [class.active]="isMobileMenuOpen()" (click)="closeMenu()"></div>
