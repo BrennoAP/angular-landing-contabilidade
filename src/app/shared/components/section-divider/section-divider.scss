@@ -1,0 +1,38 @@
+.divider-wrapper {
+  background-color: #1a2a3a; /* Mantém a cor de fundo das seções */
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.line {
+  height: 5px;
+  width: 100%;
+  /* Linha que começa transparente, fica visível no meio e volta a ser transparente */
+  background: linear-gradient(
+    90deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.15) 50%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: #25d366; /* Um toque sutil do verde do WhatsApp */
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(37, 211, 102, 0.4);
+}

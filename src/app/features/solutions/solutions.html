@@ -1,0 +1,20 @@
+<section id="services" class="services-section">
+  <div class="container">
+    
+    <header class="section-header">
+      <span class="tag">Nossas Especialidades</span>
+      <h2 class="title">Como impulsionamos seu negócio</h2>
+    </header>
+
+    <div class="services-grid">
+      @for (item of servicesList(); track item.title) {
+        <app-service-card
+          [title]="item.title"
+          [description]="item.description"
+          [icon]="item.icon">
+        </app-service-card>
+      }
+    </div>
+
+  </div>
+</section>

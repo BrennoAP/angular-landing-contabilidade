@@ -1,0 +1,38 @@
+.faq-section {
+  padding: 2rem 0;
+  background-color: #1a2a3a; // Azul escuro padrão do projeto
+}
+
+.container {
+  width: 100%;
+  max-width: 800px; //FAQ mais estreito é melhor para leitura
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .faq-tag {
+    color: #25d366;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .faq-title {
+    color: #fff;
+    /* Fonte fluida usando clamp */
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 800;
+  }
+}
+
+.faq-wrapper {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,17 @@
+<div class="faq-container" [class.active]="isOpen()">
+  <button 
+    class="faq-trigger" 
+    (click)="toggle()" 
+    [attr.aria-expanded]="isOpen()">
+    <span class="question-text">{{ question }}</span>
+    <span class="material-icons toggle-icon">
+      {{ isOpen() ? 'expand_less' : 'expand_more' }}
+    </span>
+  </button>
+  
+  <div class="faq-content">
+    <div class="answer-inner">
+      <p>{{ answer }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+.services-section {
+  padding: 8rem 0;
+  background-color: #1a2a3a; // Azul escurecido combinando com o Header
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+
+  .tag {
+    color: #25d366; // Verde do WhatsApp para destaque
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    color: #fff;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+  }
+}
+
+.services-grid {
+  display: grid;
+  /* Grid responsivo: se ajusta sozinho entre 1 e 3 colunas */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* Ajuste para telas muito pequenas onde 320px pode ser muito */
+@media (max-width: 350px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
