@@ -6,11 +6,12 @@ import { Solutions } from "./features/solutions/solutions";
 import { Faq } from "./features/faq/faq";
 import { SectionDivider } from './shared/components/section-divider/section-divider';
 import { Testimonials } from "./features/testimonials/testimonials";
+import { Footer } from "./features/footer/footer";
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, HeroComponent, Solutions, Faq, SectionDivider, Testimonials],
+  imports: [RouterOutlet, HeaderComponent, HeroComponent, Solutions, Faq, SectionDivider, Testimonials, Footer],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

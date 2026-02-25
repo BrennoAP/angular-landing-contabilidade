@@ -1,0 +1,93 @@
+<footer class="footer-main">
+  <div class="container footer-wrapper">
+    
+    <div class="footer-info">
+      <h2 class="footer-title">Vamos conversar?</h2>
+      <p class="footer-desc">
+        Estamos prontos para entender as necessidades da sua empresa e oferecer a melhor solução contábil em Viçosa.
+      </p>
+
+      <div class="contact-details">
+        <div class="detail-item">
+          <span class="material-icons">location_on</span>
+          <div>
+            <strong>Endereço</strong>
+            <p>{{ company().address }}<br>{{ company().city }} - {{ company().state }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="material-icons">phone</span>
+          <div>
+            <strong>Telefone</strong>
+            <p>{{ company().phone | phone  }}</p>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <span class="material-icons">message</span>
+          <div>
+            <strong>whatsapp</strong>
+            <p>{{ company().whatsapp | phone  }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="material-icons">email</span>
+          <div>
+            <strong>E-mail</strong>
+            <p>{{ company().email }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-actions-group">
+        <app-button 
+          label="Solicitar Orçamento por E-mail" 
+          variant="primary" 
+          (onClick)="openContactModal()">
+        </app-button>
+
+        <div class="social-highlight">
+          <span class="social-label">Siga-nos:</span>
+          <div class="social-icons">
+            <a [href]="'https://instagram.com/' + company().socials.instagram" target="_blank" class="social-btn">
+              <span class="material-icons">camera_alt</span>
+            </a>
+            <a [href]="'https://facebook.com/' + company().socials.facebook" target="_blank" class="social-btn">
+              <span class="material-icons">facebook</span>
+            </a>
+            <a [href]="'https://linkdnl.com/' + company().socials.linked" target="_blank" class="social-btn">
+              <span class="material-icons">work</span>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-map">
+      <div class="map-frame">
+        <iframe
+          [src]="mapUrl()"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container bottom-content">
+      <div class="legal">
+        <span>© {{ currentYear }} {{ company().name }}</span>
+        <span class="sep">|</span>
+        <span>CNPJ: {{ company().cnpj | cnpj }}</span>
+      </div>
+    </div>
+  </div>
+</footer>
