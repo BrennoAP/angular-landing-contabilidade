@@ -1,43 +1,64 @@
 <header class="glass-header">
-  <div class="nav-wrapper">
+  <div class="container header-content">
     
-    <a href="#hero" class="brand" aria-label="Voltar para o início">
-      <img [src]="headerIcon" alt="Logo" class="logo-icon">
-      <span class="brand-name">{{ company().name }}</span>
-    </a>
+    <div class="brand-wrapper">
+      <a href="#hero" class="brand" (click)="closeMenu()">
+        <img [src]="headerIcon" alt="Logo" class="logo-img">
+        <span class="brand-name">{{ company().name }}</span>
+      </a>
+    </div>
 
-    <nav class="nav-menu" [class.active]="isMobileMenuOpen()">
+    <nav class="nav-desktop">
       <ul class="nav-links">
-        <li><a href="#hero" (click)="closeMenu()">Início</a></li>
-        <li><a href="#services" (click)="closeMenu()">Serviços</a></li>
-        <li><a href="#contact" (click)="closeMenu()">Contato</a></li>
+        <li><a href="#hero">Início</a></li>
+        <li><a href="#services">Serviços</a></li>
+        <li><a href="#contact">Contato</a></li>
       </ul>
-
-      
     </nav>
 
-    <div class="header-actions">
-      <app-button 
-        label="WhatsApp" 
-        variant="whatsapp" 
-        [href]="whatsappLink()" 
-        target="_blank" 
-        customClass="desktop-only mr-2">
-      </app-button>
+    <div class="actions-wrapper">
+      <div class="desktop-only-btns">
+        <app-button 
+          label="WhatsApp" 
+          variant="whatsapp" 
+          [href]="whatsappLink()" 
+          target="_blank">
+        </app-button>
+        <app-button 
+          label="Orçamento" 
+          variant="glass" 
+          (onClick)="openContactModal()">
+        </app-button>
+      </div>
 
-      <app-button 
-        label="Orçamento" 
-        variant="glass" 
-        (onClick)="openContactModal()" 
-        customClass="desktop-only">
-      </app-button>
-      
-      <button class="mobile-toggle" (click)="toggleMenu()" aria-label="Abrir menu">
-        ☰
+      <button class="menu-toggle" (click)="toggleMenu()" aria-label="Abrir menu">
+        <span class="bar" [class.open]="isMobileMenuOpen()"></span>
       </button>
     </div>
 
   </div>
-</header>
 
-<div class="mobile-overlay" [class.active]="isMobileMenuOpen()" (click)="closeMenu()"></div>
+  <aside class="sidebar" [class.active]="isMobileMenuOpen()">
+    <nav class="sidebar-nav">
+      <a href="#hero" (click)="closeMenu()">Início</a>
+      <a href="#services" (click)="closeMenu()">Serviços</a>
+      <a href="#contact" (click)="closeMenu()">Contato</a>
+      
+      <div class="sidebar-footer">
+        <app-button 
+          label="WhatsApp" 
+          variant="whatsapp" 
+          [href]="whatsappLink()" 
+          target="_blank">
+        </app-button>
+        <app-button 
+          label="Orçamento" 
+          variant="glass" 
+          (onClick)="openContactModal()">
+        </app-button>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="overlay" [class.active]="isMobileMenuOpen()" (click)="closeMenu()"></div>
+</header>
