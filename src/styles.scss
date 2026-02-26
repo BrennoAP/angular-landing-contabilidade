@@ -20,3 +20,9 @@ body {
   margin: 0;
   padding: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+  /* Ajuste este valor para a altura do seu Header (80px no nosso caso) */
+  scroll-padding-top: 80px; 
+}
