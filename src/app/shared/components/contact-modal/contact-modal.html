@@ -1,47 +1,68 @@
 @if (modalService.isOpen()) {
-  <div class="modal-overlay" (click)="close()">
-    <div class="modal-card" (click)="$event.stopPropagation()">
-      
-      <button class="btn-close" (click)="close()">
-        <span class="material-icons">close</span>
-      </button>
+<div class="modal-overlay" (click)="close()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+    
+    <button class="btn-close" (click)="close()">
+      <span class="material-icons">close</span>
+    </button>
 
-      <header class="modal-header">
+    @if (!sentSuccess()) {
+      <header>
         <h2>Solicitar Orçamento</h2>
-        <p>Preencha os dados abaixo e nossa equipe entrará em contato.</p>
+        <p>Entraremos em contato o mais rápido possível.</p>
       </header>
 
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="modal-form">
-        <div class="input-group">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form">
+        <div class="form-control">
           <label>Nome Completo</label>
-          <input type="text" formControlName="name" placeholder="Ex: João Silva">
+          <input formControlName="name" placeholder="João Silva" [class.error]="shouldShowError('name')">
+          @if (shouldShowError('name')) {
+            <small class="error-text">O nome é obrigatório (mín. 3 letras).</small>
+          }
         </div>
 
         <div class="row">
-          <div class="input-group">
+          <div class="form-control">
             <label>E-mail</label>
-            <input type="email" formControlName="email" placeholder="email@exemplo.com">
+            <input formControlName="email" type="email" placeholder="contato@exemplo.com" [class.error]="shouldShowError('email')">
+            @if (shouldShowError('email')) {
+              <small class="error-text">E-mail inválido.</small>
+            }
           </div>
-          <div class="input-group">
-            <label>WhatsApp / Telefone</label>
-            <input type="text" formControlName="phone" placeholder="(31) 90000-0000">
+
+          <div class="form-control">
+            <label>WhatsApp</label>
+            <input formControlName="phone" placeholder="31900000000" [class.error]="shouldShowError('phone')">
+            @if (shouldShowError('phone')) {
+              <small class="error-text">Apenas números (DDD + Número).</small>
+            }
           </div>
         </div>
 
-        <div class="input-group">
+        <div class="form-control">
           <label>Como podemos ajudar?</label>
-          <textarea formControlName="message" rows="4" placeholder="Descreva brevemente sua necessidade..."></textarea>
+          <textarea formControlName="message" rows="4" placeholder="Descreva sua necessidade..." [class.error]="shouldShowError('message')"></textarea>
+          @if (shouldShowError('message')) {
+            <small class="error-text">Conte-nos um pouco mais (mín. 10 letras).</small>
+          }
         </div>
 
-        <div class="form-actions">
+        <div class="actions">
           <app-button 
-            label="Enviar Solicitação" 
-            variant="primary" 
-            type="submit"
-            [attr.disabled]="contactForm.invalid">
+            [label]="isSending() ? 'Enviando...' : 'Enviar Agora'"
+            [variant]="contactForm.valid ? 'primary' : 'disable'"
+            [attr.disabled]="contactForm.invalid || isSending()"
+            type="submit">
           </app-button>
         </div>
       </form>
-    </div>
+    } @else {
+      <div class="success-state">
+        <span class="material-icons success-icon">check_circle</span>
+        <h3>Sucesso!</h3>
+        <p>Sua mensagem foi enviada. Responderemos em breve.</p>
+      </div>
+    }
   </div>
+</div>
 }

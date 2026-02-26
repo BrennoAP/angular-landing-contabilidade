@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContactModalService } from '../../../core/services/contact-modal-service';
-import { EmailService } from '../../../core/services/email-service'; // Importe o novo serviço
+import { EmailService } from '../../../core/services/email-service';
 import { ButtonComponent } from '../button/button';
 
 @Component({
@@ -12,41 +12,49 @@ import { ButtonComponent } from '../button/button';
   templateUrl: './contact-modal.html',
   styleUrl: './contact-modal.scss'
 })
-export class ContactModal {
+export class ContactModal{
   protected modalService = inject(ContactModalService);
-  private contactService = inject(EmailService); // Injeção do serviço de e-mail
+  private emailService = inject(EmailService);
   private fb = inject(FormBuilder);
 
-  // Signal para controlar o estado de carregamento do botão
   isSending = signal(false);
+  sentSuccess = signal(false);
 
   contactForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
-    phone: ['', [Validators.required]],
+    phone: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]], // Apenas números
     message: ['', [Validators.required, Validators.minLength(10)]]
   });
 
-  close() {
-    this.modalService.close();
+  // Atalho para o HTML verificar se o campo deve mostrar erro
+  shouldShowError(fieldName: string): boolean {
+    const field = this.contactForm.get(fieldName);
+    return !!(field?.invalid && (field?.dirty || field?.touched));
   }
 
   async onSubmit() {
     if (this.contactForm.valid && !this.isSending()) {
       this.isSending.set(true);
-      
       try {
-        await this.contactService.sendContactEmail(this.contactForm.value);
-        
-        alert('Solicitação enviada com sucesso! Entraremos em contato em breve.');
+        await this.emailService.sendContactEmail(this.contactForm.value);
+        this.sentSuccess.set(true);
         this.contactForm.reset();
-        this.close();
+        
+        // Fecha o modal após o sucesso
+        setTimeout(() => {
+          this.close();
+          this.sentSuccess.set(false);
+        }, 3000);
       } catch (error) {
-        console.error('Erro ao enviar e-mail:', error);
-        alert('Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.');
+        alert('Ocorreu um erro ao enviar sua mensagem. Tente novamente ou use o WhatsApp.');
       } finally {
         this.isSending.set(false);
       }
     }
+  }
+
+  close() {
+    this.modalService.close();
   }
 }

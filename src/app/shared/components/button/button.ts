@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 export class ButtonComponent {
   // Propriedades que você pode injetar no botão
   @Input() label: string = 'Clique aqui';
-  @Input() variant: 'primary' | 'glass' | 'whatsapp' | 'outline' = 'primary';
+  @Input() variant: 'primary' | 'glass' | 'whatsapp' | 'secondary'| 'disable'| 'outline' = 'primary' ;
   @Input() icon?: string; // Ex: 'pi pi-whatsapp' ou ícone do Material
   @Input() href?: string; // Se passar href, ele vira um <a>
   @Input() target: string = '_self'; // Para links externos (_blank)

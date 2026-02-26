@@ -56,7 +56,7 @@
 
 /* --- Variação 3: Primary (Sólido para Formulários e Hero) --- */
 .btn-primary {
-  background: #213555;
+  background: #2c466f;
   color: #ffffff;
   border: 1px solid transparent;
 
@@ -66,3 +66,26 @@
     transform: translateY(-2px);
   }
 }
+.btn-disable {
+  background: #cbd5e1;
+  color: #ffffff;
+  border: 1px solid transparent;
+
+  &:hover {
+    background: #cbd5e1;
+    box-shadow: 0 4px 15px rgba(33, 53, 85, 0.3);
+    transform: translateY(-2px);
+  }
+}
+.btn-secondary {
+  background: #25d366;
+  color: #ffffff;
+  border: 1px solid transparent;
+
+  &:hover {
+    background: #1bbd56;
+    box-shadow: 0 4px 15px rgba(33, 53, 85, 0.3);
+    transform: translateY(-2px);
+  }
+}
+

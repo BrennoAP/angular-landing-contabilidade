@@ -15,6 +15,6 @@ export class HeroComponent {
   heroImage = '/icons/aperto-de-mao.jpg'
   // Função para rolar até o contato (usada no botão)
   contactScroll() {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
   }
 }

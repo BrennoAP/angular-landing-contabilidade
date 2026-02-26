@@ -62,8 +62,18 @@ export const TestimonialSchema = z.object({
   initials: z.string().min(1).max(3),
 });
 
+export const ContactSchema = z.object({
+  name: z.string().min(3, "O nome deve ter pelo menos 3 caracteres"),
+  email: z.string().email("Insira um e-mail válido"),
+  phone: z.string().min(10, "Informe um telefone válido (mín. 10 dígitos)"),
+  message: z.string().min(10, "A mensagem deve ter pelo menos 10 caracteres")
+});
+
+
+
 
 export type Company = z.infer<typeof CompanySchema>;
 export type CompanyService = z.infer<typeof ServiceSchema>;
 export type FaqItem = z.infer<typeof FaqSchema>;
 export type Testimonial = z.infer<typeof TestimonialSchema>;
+export type ContactFormData = z.infer<typeof ContactSchema>;
