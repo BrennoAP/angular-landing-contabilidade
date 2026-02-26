@@ -1,0 +1,47 @@
+@if (modalService.isOpen()) {
+  <div class="modal-overlay" (click)="close()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      
+      <button class="btn-close" (click)="close()">
+        <span class="material-icons">close</span>
+      </button>
+
+      <header class="modal-header">
+        <h2>Solicitar Orçamento</h2>
+        <p>Preencha os dados abaixo e nossa equipe entrará em contato.</p>
+      </header>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="modal-form">
+        <div class="input-group">
+          <label>Nome Completo</label>
+          <input type="text" formControlName="name" placeholder="Ex: João Silva">
+        </div>
+
+        <div class="row">
+          <div class="input-group">
+            <label>E-mail</label>
+            <input type="email" formControlName="email" placeholder="email@exemplo.com">
+          </div>
+          <div class="input-group">
+            <label>WhatsApp / Telefone</label>
+            <input type="text" formControlName="phone" placeholder="(31) 90000-0000">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>Como podemos ajudar?</label>
+          <textarea formControlName="message" rows="4" placeholder="Descreva brevemente sua necessidade..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <app-button 
+            label="Enviar Solicitação" 
+            variant="primary" 
+            type="submit"
+            [attr.disabled]="contactForm.invalid">
+          </app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

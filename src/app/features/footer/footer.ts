@@ -5,13 +5,12 @@ import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { COMPANY } from '../../core/models/company.model';
 import { ButtonComponent } from '../../shared/components/button/button';
-//import { phone } from '../../shared/pipes/phone.pipe';
-
+import { ContactModalService } from '../../core/services/contact-modal-service';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, CnpjPipe,PhonePipe],
+  imports: [CommonModule, ButtonComponent, CnpjPipe, PhonePipe],
   templateUrl: './footer.html',
   styleUrl: './footer.scss'
 })
@@ -19,6 +18,7 @@ export class Footer {
   private sanitizer = inject(DomSanitizer);
   readonly company = signal(COMPANY);
   readonly currentYear = new Date().getFullYear();
+  private modalService = inject(ContactModalService);
 
   readonly mapUrl = computed<SafeResourceUrl>(() => {
     const { lat, lng, zoom } = this.company().location;
@@ -27,6 +27,6 @@ export class Footer {
   });
 
   openContactModal() {
-    console.log("Abrindo formulário de contato...");
+    this.modalService.open();
   }
 }

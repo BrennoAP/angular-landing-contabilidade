@@ -1,8 +1,8 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed,inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { COMPANY } from '../../core/models/company.model';
-import { ButtonComponent } from '../../shared/components/button/button'; // Importe AQUI
-
+import { ButtonComponent } from '../../shared/components/button/button'; 
+import { ContactModalService } from '../../core/services/contact-modal-service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -14,6 +14,7 @@ export class HeaderComponent {
   company = signal(COMPANY);
   isMobileMenuOpen = signal(false);
   headerIcon = '/icons/iconecont.png';
+  private modalService = inject(ContactModalService);
 
   whatsappLink = computed(() => {
     const phone = this.company().whatsapp;
@@ -28,10 +29,8 @@ export class HeaderComponent {
     this.isMobileMenuOpen.set(false);
   }
 
-  // Função que o novo botão de orçamento vai chamar
   openContactModal() {
-    console.log("Aqui vai abrir o modal de email futuramente!");
-    this.closeMenu();
+    this.modalService.open();
   }
 }
 
