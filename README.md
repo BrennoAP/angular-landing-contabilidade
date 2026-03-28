@@ -1,59 +1,54 @@
-# LandingContabilidade
+# 🚀 Angular Landing Page Template
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+Uma Landing Page moderna, performática e segura desenvolvida com as melhores práticas do ecossistema Angular. O projeto foca em alta conversão de leads, arquitetura escalável e uma experiência de usuário (UX) fluida e responsiva.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🛠️ Tecnologias Utilizadas
 
-```bash
-ng serve
-```
+* **Angular 19**: Utilizando as últimas funcionalidades como **Signals** para gerenciamento de estado reativo e **Standalone Components**.
+* **TypeScript**: Tipagem estrita para maior segurança e previsibilidade no desenvolvimento.
+* **Zod**: Validação de esquemas de dados (Schema Validation) para garantir a integridade das informações.
+* **SASS (SCSS)**: Estilização modular avançada com variáveis, mixins e funções.
+* **HttpClient**: Integração nativa para consumo de APIs REST externas.
+* **EmailJS**: Integração configurada para envio de formulários via API, sem necessidade de backend próprio.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 📂 Arquitetura do Projeto
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+O projeto segue os princípios de **Clean Architecture** adaptados para a estrutura do Angular:
 
-```bash
-ng generate component component-name
-```
+* **Core**: Contém modelos globais (`.schema.ts`), configurações validadas (`.config.ts`) e serviços singleton (Envio de e-mail, Controle Global de Modais).
+* **Features**: Componentes de negócio e seções principais da página (Hero, Serviços, FAQ, Localização).
+* **Shared**: Componentes de interface reutilizáveis (Botões, Modais de feedback) e Pipes de formatação.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🔒 Validações e UX
 
-## Building
+Implementamos uma camada de proteção e feedback de alta fidelidade:
 
-To build the project run:
+1.  **Zod Schema**: Validação rigorosa de tipos, e-mails, comprimentos de string e formatos específicos (como documentos e endereços).
+2.  **Reactive Forms**: Feedback visual em tempo real para o usuário com mensagens de erro condicionais e classes dinâmicas.
+3.  **Botão Inteligente**: O botão de submissão alterna o estado visual (**Disabled/Primary**) e de cor (**Cinza/Ativo**) baseado na validade do formulário.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 📦 Como rodar o projeto
 
-## Running unit tests
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/seu-usuario/seu-projeto.git](https://github.com/seu-usuario/seu-projeto.git)
+    ```
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+3.  **Inicie o servidor de desenvolvimento:**
+    ```bash
+    ng serve
+    ```
+    Acesse `http://localhost:4200` no seu navegador.
